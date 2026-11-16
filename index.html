@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Castoro&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="static/css/index.css?v=8">
+<link rel="stylesheet" href="static/css/index.css?v=9">
 <script>
   window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
@@ -46,10 +46,8 @@
     </div>
 
     <figure class="teaser">
-      <video class="autoplay" muted loop playsinline preload="metadata" poster="media/fig/win_task19_trial0_strip.png?v=3">
-        <source src="media/video/win_task19_trial0.mp4?v=3" type="video/mp4">
-      </video>
-      <figcaption><b>Same initial state, different outcome.</b> Rollouts on LIBERO-90 from the SFT policy and from HINT-WAM.</figcaption>
+      <img src="media/fig/teaser.png?v=4" alt="HINT-WAM teaser: SFT versus HINT-WAM rollouts on two LIBERO-90 tasks, and a radar chart of success rates">
+      <figcaption><b>HINT-WAM post-trains world action models with hindsight.</b> <em>Left:</em> rollouts on two LIBERO-90 tasks from the same initial state, where SFT fails and HINT-WAM succeeds. <em>Right:</em> success rates (%) of HINT-WAM, the BC control, and full SFT on the new LIBERO-90 tasks, RoboTwin 2.0, and the four original LIBERO suites after post-training on LIBERO-90 without replay.</figcaption>
     </figure>
   </div>
 </header>
@@ -75,7 +73,7 @@
   <p class="lead narrow">The teacher and the student are the <em>same network</em>. The teacher additionally reads <b>hindsight</b>: the future video of the demonstration being imitated. The student sees only deployment-time inputs and is trained on the states its own sampler visits.</p>
 
   <figure>
-    <img src="media/fig/overview.png?v=3" alt="Overview of HINT-WAM: Stage 0 SFT, Stage A hindsight teacher, Stage B on-policy self-distillation" loading="lazy">
+    <img src="media/fig/overview.png?v=4" alt="Overview of HINT-WAM: Stage 0 SFT, Stage A hindsight teacher, Stage B on-policy self-distillation" loading="lazy">
     <figcaption><b>Overview.</b> Stage 0 fine-tunes the action expert with flow matching. Stage A trains a hindsight encoder and gated cross-attention adapters on the frozen SFT model, giving the teacher. Stage B integrates the student's own ODE without gradients and matches its implied actions to a teacher sample with the energy score, plus a behavior-cloning anchor. Only the student is deployed.</figcaption>
   </figure>
 
@@ -158,7 +156,7 @@
   <h3>Ablations and cost</h3>
   <div class="figgrid">
     <figure>
-      <img src="media/fig/ablation.png?v=3" alt="Ablation: velocity matching vs energy score" loading="lazy">
+      <img src="media/fig/ablation.png?v=4" alt="Ablation: velocity matching vs energy score" loading="lazy">
       <figcaption><b>Distillation objective.</b> Velocity matching gains nothing over SFT (79.02%); the energy score reaches 85.18%.</figcaption>
     </figure>
     <figure>

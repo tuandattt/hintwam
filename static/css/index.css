@@ -120,3 +120,8 @@ th.c{text-align:center !important}
 .vcard video[hidden],.rawnote[hidden]{display:none}
 
 .subtitle .u{text-decoration:underline;text-decoration-color:#76b900;text-decoration-thickness:3px;text-underline-offset:4px}
+
+.teaser img{width:100%;max-width:1080px;height:auto;border-radius:8px;box-shadow:0 6px 24px rgba(0,0,0,.10);background:#fff}
+.teaser video{display:none}
+.hero .wrap{max-width:1180px}
+.teaser figcaption{text-align:justify;max-width:1080px}
