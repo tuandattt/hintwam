@@ -125,3 +125,6 @@ th.c{text-align:center !important}
 .teaser video{display:none}
 .hero .wrap{max-width:1180px}
 .teaser figcaption{text-align:justify;max-width:1080px}
+
+.carousel.wide{max-width:980px}
+.carousel.wide .nav{top:40%}

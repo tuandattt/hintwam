@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Castoro&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="static/css/index.css?v=10">
+<link rel="stylesheet" href="static/css/index.css?v=11">
 <script>
   window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
@@ -183,7 +183,7 @@
 
 <section id="videos" class="wrap">
   <h2>Qualitative Comparison</h2>
-  <p class="narrow">LIBERO-90 rollouts of SFT and HINT-WAM from the <b>same initial state</b>. Each card shows the rollout video above five keyframes.</p>
+  <p class="narrow">Rollouts of the compared policies. On LIBERO, both start from the <b>same initial state</b>, and each card shows the rollout video above five keyframes.</p>
 
   <div class="vgroup">
     <h3><span class="dot win"></span>Learning new tasks (LIBERO-90): SFT fails, HINT-WAM succeeds</h3>
@@ -258,6 +258,38 @@
       </div>
       <button class="nav next" aria-label="Next video">&#10095;</button>
       <div class="dots"><button class="dotbtn on" aria-label="Go to video 1"></button><button class="dotbtn" aria-label="Go to video 2"></button><button class="dotbtn" aria-label="Go to video 3"></button></div>
+    </div>
+  </div>
+
+  <div class="vgroup">
+    <h3><span class="dot win"></span>RoboTwin 2.0 (dual-arm): BC control fails, HINT-WAM succeeds</h3>
+    <p class="narrow">Clean-setting rollouts on RoboTwin 2.0, matched by episode index. Object placements are randomized per run, so the starting layout can differ between the two policies. Use the arrows to browse.</p>
+    <div class="carousel wide">
+      <button class="nav prev" aria-label="Previous video">&#10094;</button>
+      <div class="slides">
+      <article class="vcard slide active">
+        <h4>Episode 0</h4>
+        <video class="autoplay" controls muted loop playsinline preload="none" poster="media/fig/robotwin_ep0_poster.jpg?v=3"><source src="media/video/robotwin_ep0.mp4?v=3" type="video/mp4"></video>
+        <p>Bowl stacking, clean setting. BC control (left) fails, while HINT-WAM (right) succeeds. The HINT-WAM clip ends at success and its last frame is held while the BC control keeps running.</p>
+      </article>
+      <article class="vcard slide">
+        <h4>Episode 7</h4>
+        <video class="autoplay" controls muted loop playsinline preload="none" poster="media/fig/robotwin_ep7_poster.jpg?v=3"><source src="media/video/robotwin_ep7.mp4?v=3" type="video/mp4"></video>
+        <p>Bowl stacking, clean setting. BC control (left) fails, while HINT-WAM (right) succeeds. The HINT-WAM clip ends at success and its last frame is held while the BC control keeps running.</p>
+      </article>
+      <article class="vcard slide">
+        <h4>Episode 10</h4>
+        <video class="autoplay" controls muted loop playsinline preload="none" poster="media/fig/robotwin_ep10_poster.jpg?v=3"><source src="media/video/robotwin_ep10.mp4?v=3" type="video/mp4"></video>
+        <p>Bowl stacking, clean setting. BC control (left) fails, while HINT-WAM (right) succeeds. The HINT-WAM clip ends at success and its last frame is held while the BC control keeps running.</p>
+      </article>
+      <article class="vcard slide">
+        <h4>Episode 16</h4>
+        <video class="autoplay" controls muted loop playsinline preload="none" poster="media/fig/robotwin_ep16_poster.jpg?v=3"><source src="media/video/robotwin_ep16.mp4?v=3" type="video/mp4"></video>
+        <p>Bowl stacking, clean setting. BC control (left) fails, while HINT-WAM (right) succeeds. The HINT-WAM clip ends at success and its last frame is held while the BC control keeps running.</p>
+      </article>
+      </div>
+      <button class="nav next" aria-label="Next video">&#10095;</button>
+      <div class="dots"><button class="dotbtn on" aria-label="Go to episode 0"></button><button class="dotbtn" aria-label="Go to episode 7"></button><button class="dotbtn" aria-label="Go to episode 10"></button><button class="dotbtn" aria-label="Go to episode 16"></button></div>
     </div>
   </div>
 </section>
