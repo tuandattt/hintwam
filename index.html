@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&family=Castoro&family=Google+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="static/css/index.css?v=9">
+<link rel="stylesheet" href="static/css/index.css?v=10">
 <script>
   window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
 </script>
@@ -116,7 +116,7 @@
     <tr><th class="c">Clean</th><th>Random.</th></tr></thead>
     <tbody>
       <tr><td>Fast-WAM</td><td>15.56</td><td>86.48</td><td>83.44</td></tr>
-      <tr><td>SFT</td><td>78.89</td><td>&ndash;</td><td>&ndash;</td></tr>
+      <tr><td>SFT</td><td>78.88</td><td>&ndash;</td><td>&ndash;</td></tr>
       <tr><td>Full SFT</td><td>81.24</td><td>84.12</td><td>83.24</td></tr>
       <tr><td>BC control</td><td>71.56</td><td>85.36</td><td>82.08</td></tr>
       <tr><td>Self-imitation</td><td>79.62</td><td>&ndash;</td><td>&ndash;</td></tr>
@@ -127,7 +127,7 @@
   </div>
   <ul class="narrow bullets">
     <li><b>Not just more training:</b> continuing SFT with the same steps but no teacher drops to 71.56%.</li>
-    <li><b>Not just on-policy data:</b> self-imitation adds only 0.73 points; HINT-WAM beats it by 5.56.</li>
+    <li><b>Not just on-policy data:</b> self-imitation adds only 0.74 points; HINT-WAM beats it by 5.56.</li>
     <li><b>The gain is the privileged information:</b> a teacher that reads another episode's future reaches only 80.28%.</li>
     <li><b>Beats full SFT</b> by 3.94 points while training only the action expert.</li>
   </ul>
@@ -141,11 +141,11 @@
     <tbody>
       <tr><td>Fast-WAM</td><td>15.56</td><td>96.8</td><td>99.6</td><td>95.8</td><td>94.0</td><td>96.55</td></tr>
       <tr class="sec"><td colspan="7">Without replay</td></tr>
-      <tr><td>SFT</td><td>78.89</td><td>58.6</td><td>33.2</td><td>53.4</td><td>4.6</td><td>37.45</td></tr>
+      <tr><td>SFT</td><td>78.88</td><td>58.6</td><td>33.2</td><td>53.4</td><td>4.6</td><td>37.45</td></tr>
       <tr><td>Full SFT</td><td>81.24</td><td>54.4</td><td>30.2</td><td>44.6</td><td>2.2</td><td>32.85</td></tr>
       <tr class="ours"><td>HINT-WAM</td><td>85.18</td><td>70.8</td><td>38.4</td><td>58.8</td><td>8.2</td><td>44.05</td></tr>
       <tr class="sec"><td colspan="7">With replay</td></tr>
-      <tr><td>SFT</td><td>76.71</td><td>97.2</td><td>95.8</td><td>92.0</td><td>81.2</td><td>91.55</td></tr>
+      <tr><td>SFT</td><td>76.70</td><td>97.2</td><td>95.8</td><td>92.0</td><td>81.2</td><td>91.55</td></tr>
       <tr><td>Full SFT</td><td>77.64</td><td>97.8</td><td>96.0</td><td>94.4</td><td>83.4</td><td>92.90</td></tr>
       <tr class="ours"><td>HINT-WAM</td><td>81.56</td><td>98.4</td><td>96.0</td><td>95.8</td><td>90.2</td><td>95.10</td></tr>
     </tbody>
@@ -157,7 +157,7 @@
   <div class="figgrid">
     <figure>
       <img src="media/fig/ablation.png?v=4" alt="Ablation: velocity matching vs energy score" loading="lazy">
-      <figcaption><b>Distillation objective.</b> Velocity matching gains nothing over SFT (79.02%); the energy score reaches 85.18%.</figcaption>
+      <figcaption><b>Distillation objective.</b> Gain over SFT with velocity matching (+0.1; 79.02%), kernel MMD (80.63%), action-space MSE (82.93%) or the energy score (85.18%).</figcaption>
     </figure>
     <figure>
       <img src="media/fig/anchor_ablation.png?v=3" alt="Effect of the BC anchor" loading="lazy">
@@ -165,14 +165,14 @@
     </figure>
     <figure>
       <img src="media/fig/num_samples.png?v=3" alt="Effect of number of student samples" loading="lazy">
-      <figcaption><b>Student samples $M$.</b> Success improves monotonically to 85.2% at $M=4$ as the repulsion term preserves diversity.</figcaption>
+      <figcaption><b>Student samples $M$.</b> Success improves monotonically to 85.2% at $M=4$. Action-space MSE with $M=4$ reaches only 82.9%, so the gain stems from the repulsion term rather than from the number of samples alone.</figcaption>
     </figure>
     <figure>
       <img src="media/fig/onpolicy_ablation.png?v=3" alt="Effect of on-policy states: SFT, off-policy distillation, on-policy HINT-WAM" loading="lazy">
       <figcaption><b>On-policy states.</b> Distilling on demonstration states (off-policy) lifts SFT only from 78.9% to 80.7%; distilling on the student&rsquo;s own sampling trajectories reaches 85.2%.</figcaption>
     </figure>
   </div>
-  <p class="narrow">The off-policy variant replaces the student&rsquo;s sampler states with the demonstrated action noised to the same points, i.e. the states SFT sees, keeping everything else unchanged. The hindsight teacher helps even on demonstration states, but most of the gain requires supervising the student on the states it reaches at inference.</p>
+  <p class="narrow">The off-policy variant replaces the student&rsquo;s sampler states with demonstrated actions noised to the same points, i.e. the states SFT sees. The shuffled-hindsight baseline (80.3%) keeps on-policy states but removes the privileged information. Hindsight and on-policy states thus each improve SFT by less than 2% alone but add 6.3% together: the teacher&rsquo;s correction is most useful on the denoising states the student actually reaches at inference.</p>
 
   <h3>Computational cost</h3>
   <figure class="costfig">
